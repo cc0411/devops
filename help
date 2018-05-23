@@ -1,0 +1,4 @@
+1. 执行：python3 manage.py celery  worker --loglevel=INFO #启动worker，自动加载tasks
+2. 执行：python3 manage.py celery beat --loglevel=INFO #监听后面定时任务
+3. 启动flower celery -A autodev flower
+http://localhost:5555/tasks web后台界面可以查看任务执行状态

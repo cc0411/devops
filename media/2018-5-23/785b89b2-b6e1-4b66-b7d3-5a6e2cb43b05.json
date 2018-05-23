@@ -1,0 +1,182 @@
+{
+  "width": 144, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 21.53721, 
+  "stdout": [
+    [
+      0.029956, 
+      "Last login: Wed May 23 18:13:45 2018 from 192.168.56.1\r\r\n"
+    ], 
+    [
+      0.044203, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      3.240197, 
+      "l"
+    ], 
+    [
+      0.131143, 
+      "s"
+    ], 
+    [
+      0.15979, 
+      "\r\n"
+    ], 
+    [
+      0.00609, 
+      "anaconda-ks.cfg  \u001b[0m\u001b[01;34mautodev2\u001b[0m  \u001b[01;31mautodev2.zip\u001b[0m  \u001b[01;34mwebterminal\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.494745, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.764173, 
+      "i"
+    ], 
+    [
+      0.106609, 
+      "f"
+    ], 
+    [
+      0.189927, 
+      "c"
+    ], 
+    [
+      0.056278, 
+      "o"
+    ], 
+    [
+      0.199425, 
+      "n"
+    ], 
+    [
+      0.212072, 
+      "i"
+    ], 
+    [
+      0.15042, 
+      "f"
+    ], 
+    [
+      0.156731, 
+      "g"
+    ], 
+    [
+      0.368742, 
+      "\r\n"
+    ], 
+    [
+      0.004407, 
+      "-bash: ifconifg: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.909468, 
+      "i"
+    ], 
+    [
+      0.193122, 
+      "f"
+    ], 
+    [
+      0.222905, 
+      "c"
+    ], 
+    [
+      0.090444, 
+      "o"
+    ], 
+    [
+      0.179945, 
+      "n"
+    ], 
+    [
+      0.120522, 
+      "f"
+    ], 
+    [
+      0.067643, 
+      "i"
+    ], 
+    [
+      0.21435, 
+      "g"
+    ], 
+    [
+      0.596973, 
+      "\r\n"
+    ], 
+    [
+      0.007607, 
+      "enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255\r\n        inet6 fe80::3091:3e9f:ee63:abb6  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:54:fc:44  txqueuelen 1000  (Ethernet)\r\n        RX packets 37331  bytes 49940612 (47.6 MiB)\r\n        RX errors 16  dropped 0  overruns 0  frame 0\r\n        TX packets 23120  bytes 1313213 (1.2 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n        device interrupt 19  base 0xd020  \r\n\r\nenp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255\r\n        inet6 fe80::2c11:4202:ec4f:a369  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:73:b0:ed  txqueuelen 1000  (Ethernet)\r\n        RX packets 57753  bytes 31814683 (30.3 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 40632  bytes 64514224 (61.5 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carri"
+    ], 
+    [
+      0.007161, 
+      "er 0  collisions 0\r\n\r\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\r\n        inet 127.0.0.1  netmask 255.0.0.0\r\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\r\n        loop  txqueuelen 1  (Local Loopback)\r\n        RX packets 6463610  bytes 597164967 (569.5 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 6463610  bytes 597164967 (569.5 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.658704, 
+      "p"
+    ], 
+    [
+      0.093152, 
+      "w"
+    ], 
+    [
+      0.2149, 
+      "d"
+    ], 
+    [
+      0.214841, 
+      "\r\n/root\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.420729, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.198613, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.207281, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.889084, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.259031, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      8.537833, 
+      "e"
+    ], 
+    [
+      0.229717, 
+      "x"
+    ], 
+    [
+      0.15178, 
+      "i"
+    ], 
+    [
+      0.25129, 
+      "t"
+    ], 
+    [
+      0.27791, 
+      "\r\nlogout\r\n"
+    ]
+  ], 
+  "height": 40
+}

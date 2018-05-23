@@ -1,0 +1,242 @@
+{
+  "width": 90, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 2096.23395, 
+  "stdout": [
+    [
+      0.003709, 
+      "Last login: Wed May 23 16:31:30 2018 from 192.168.56.1\r\r\n"
+    ], 
+    [
+      0.056995, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      102.50978, 
+      "p"
+    ], 
+    [
+      0.138699, 
+      "w"
+    ], 
+    [
+      0.241536, 
+      "d"
+    ], 
+    [
+      0.182042, 
+      "\r\n/root\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.887551, 
+      "l"
+    ], 
+    [
+      0.094172, 
+      "s"
+    ], 
+    [
+      0.183906, 
+      "\r\n"
+    ], 
+    [
+      0.005294, 
+      "anaconda-ks.cfg  \u001b[0m\u001b[01;34mautodev2\u001b[0m  \u001b[01;31mautodev2.zip\u001b[0m  \u001b[01;34mwebterminal\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.89284, 
+      "i"
+    ], 
+    [
+      0.121221, 
+      "f"
+    ], 
+    [
+      0.218648, 
+      "c"
+    ], 
+    [
+      0.049481, 
+      "o"
+    ], 
+    [
+      0.226722, 
+      "n"
+    ], 
+    [
+      0.209214, 
+      "i"
+    ], 
+    [
+      0.156316, 
+      "f"
+    ], 
+    [
+      0.141796, 
+      "g"
+    ], 
+    [
+      0.323964, 
+      "\r\n"
+    ], 
+    [
+      0.007727, 
+      "-bash: ifconifg: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.903685, 
+      "i"
+    ], 
+    [
+      0.102652, 
+      "f"
+    ], 
+    [
+      0.211451, 
+      "c"
+    ], 
+    [
+      0.115107, 
+      "o"
+    ], 
+    [
+      0.205045, 
+      "n"
+    ], 
+    [
+      0.102485, 
+      "f"
+    ], 
+    [
+      0.114903, 
+      "i"
+    ], 
+    [
+      0.243414, 
+      "g"
+    ], 
+    [
+      0.418662, 
+      "\r\n"
+    ], 
+    [
+      0.015883, 
+      "enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255\r\n        inet6 fe80::3091:3e9f:ee63:abb6  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:54:fc:44  txqueuelen 1000  (Ethernet)\r\n        RX packets 37328  bytes 49939857 (47.6 MiB)\r\n        RX errors 16  dropped 0  overruns 0  frame 0\r\n        TX packets 23117  bytes 1312747 (1.2 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n        device interrupt 19  base 0xd020  \r\n\r\nenp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255\r\n        inet6 fe80::2c11:4202:ec4f:a369  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:73:b0:ed  txqueuelen 1000  (Ethernet)\r\n        RX packets 57465  bytes 31781559 (30.3 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 40467  bytes 64482886 (61.4 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carri"
+    ], 
+    [
+      0.005666, 
+      "er 0  collisions 0\r\n\r\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\r\n        inet 127.0.0.1  netmask 255.0.0.0\r\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\r\n        loop  txqueuelen 1  (Local Loopback)\r\n        RX packets 6333864  bytes 585449116 (558.3 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 6333864  bytes 585449116 (558.3 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.703729, 
+      "e"
+    ], 
+    [
+      0.23381, 
+      "w"
+    ], 
+    [
+      0.227643, 
+      "w"
+    ], 
+    [
+      0.182432, 
+      "w"
+    ], 
+    [
+      0.246943, 
+      "\r\n"
+    ], 
+    [
+      0.005667, 
+      "-bash: ewww: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.91896, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      6.261427, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.366155, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.244627, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      2.749668, 
+      "q"
+    ], 
+    [
+      0.23985, 
+      "u"
+    ], 
+    [
+      0.276441, 
+      "i"
+    ], 
+    [
+      0.270617, 
+      "t"
+    ], 
+    [
+      0.331516, 
+      "\r\n"
+    ], 
+    [
+      0.005999, 
+      "-bash: quit: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.922727, 
+      "e"
+    ], 
+    [
+      0.259905, 
+      "x"
+    ], 
+    [
+      0.107372, 
+      "i"
+    ], 
+    [
+      1.567357, 
+      "e"
+    ], 
+    [
+      0.645783, 
+      "x"
+    ], 
+    [
+      1.372603, 
+      "i"
+    ], 
+    [
+      0.321165, 
+      "t"
+    ], 
+    [
+      0.285617, 
+      "\r\n"
+    ], 
+    [
+      0.005403, 
+      "-bash: exiexit: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.321243, 
+      "\r\n[root@localhost ~]# "
+    ]
+  ], 
+  "height": 40
+}

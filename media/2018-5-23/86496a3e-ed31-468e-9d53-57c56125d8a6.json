@@ -1,0 +1,22 @@
+{
+  "width": 90, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 115.866289, 
+  "stdout": [
+    [
+      7.3e-05, 
+      "Last login: Wed May 23 15:24:55 2018 from 192.168.56.1\r\r\n"
+    ], 
+    [
+      0.046503, 
+      "[root@localhost ~]# "
+    ]
+  ], 
+  "height": 40
+}

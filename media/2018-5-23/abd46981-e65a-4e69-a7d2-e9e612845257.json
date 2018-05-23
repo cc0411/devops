@@ -1,0 +1,250 @@
+{
+  "width": 122, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 19.604248, 
+  "stdout": [
+    [
+      0.027028, 
+      "Last login: Wed May 23 17:38:19 2018 from 192.168.56.1\r\r\n"
+    ], 
+    [
+      0.039633, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      3.765505, 
+      "l"
+    ], 
+    [
+      0.109711, 
+      "s"
+    ], 
+    [
+      0.205635, 
+      "\r\n"
+    ], 
+    [
+      0.005612, 
+      "anaconda-ks.cfg  \u001b[0m\u001b[01;34mautodev2\u001b[0m  \u001b[01;31mautodev2.zip\u001b[0m  \u001b[01;34mwebterminal\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.993001, 
+      "p"
+    ], 
+    [
+      0.108888, 
+      "w"
+    ], 
+    [
+      0.25656, 
+      "d"
+    ], 
+    [
+      0.017011, 
+      "f"
+    ], 
+    [
+      0.098405, 
+      "\r\n"
+    ], 
+    [
+      0.006522, 
+      "-bash: pwdf: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.67437, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.716189, 
+      "w"
+    ], 
+    [
+      0.206988, 
+      "w"
+    ], 
+    [
+      0.148426, 
+      "w"
+    ], 
+    [
+      0.180564, 
+      "\r\n"
+    ], 
+    [
+      0.006855, 
+      "-bash: www: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.98357, 
+      "i"
+    ], 
+    [
+      0.009611, 
+      "o"
+    ], 
+    [
+      0.100207, 
+      "f"
+    ], 
+    [
+      1.003504, 
+      "c"
+    ], 
+    [
+      0.301812, 
+      "p"
+    ], 
+    [
+      0.011428, 
+      "o"
+    ], 
+    [
+      0.084647, 
+      "n"
+    ], 
+    [
+      0.088078, 
+      "f"
+    ], 
+    [
+      0.131306, 
+      "o"
+    ], 
+    [
+      0.245782, 
+      "g"
+    ], 
+    [
+      0.071773, 
+      "h"
+    ], 
+    [
+      0.198394, 
+      "\r\n-bash: iofcponfogh: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.167351, 
+      "p"
+    ], 
+    [
+      0.076283, 
+      "w"
+    ], 
+    [
+      0.180624, 
+      "d"
+    ], 
+    [
+      0.141105, 
+      "\r\n/root\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.987315, 
+      "q"
+    ], 
+    [
+      0.202476, 
+      "q"
+    ], 
+    [
+      0.157956, 
+      "q"
+    ], 
+    [
+      0.206765, 
+      "\r\n"
+    ], 
+    [
+      0.006924, 
+      "-bash: qqq: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.49845, 
+      "i"
+    ], 
+    [
+      0.128341, 
+      "f"
+    ], 
+    [
+      0.190352, 
+      "c"
+    ], 
+    [
+      0.087215, 
+      "o"
+    ], 
+    [
+      0.184038, 
+      "n"
+    ], 
+    [
+      0.152423, 
+      "f"
+    ], 
+    [
+      0.068457, 
+      "i"
+    ], 
+    [
+      0.232758, 
+      "g"
+    ], 
+    [
+      0.275326, 
+      "\r\n"
+    ], 
+    [
+      0.01003, 
+      "enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255\r\n        inet6 fe80::3091:3e9f:ee63:abb6  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:54:fc:44  txqueuelen 1000  (Ethernet)\r\n        RX packets 37331  bytes 49940612 (47.6 MiB)\r\n        RX errors 16  dropped 0  overruns 0  frame 0\r\n        TX packets 23120  bytes 1313213 (1.2 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n        device interrupt 19  base 0xd020  \r\n\r\nenp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255\r\n        inet6 fe80::2c11:4202:ec4f:a369  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:73:b0:ed  txqueuelen 1000  (Ethernet)\r\n        RX packets 57658  bytes 31804415 (30.3 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 40574  bytes 64502149 (61.5 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carri"
+    ], 
+    [
+      0.003993, 
+      "er 0  collisions 0\r\n\r\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\r\n        inet 127.0.0.1  netmask 255.0.0.0\r\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\r\n        loop  txqueuelen 1  (Local Loopback)\r\n        RX packets 6457998  bytes 596658247 (569.0 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 6457998  bytes 596658247 (569.0 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.912303, 
+      "p"
+    ], 
+    [
+      0.105041, 
+      "w"
+    ], 
+    [
+      0.21686, 
+      "d"
+    ], 
+    [
+      0.214168, 
+      "\r\n/root\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.43956, 
+      "e"
+    ], 
+    [
+      0.216022, 
+      "x"
+    ], 
+    [
+      0.081234, 
+      "i"
+    ], 
+    [
+      0.287841, 
+      "t"
+    ], 
+    [
+      0.364669, 
+      "\r\nlogout\r\n"
+    ]
+  ], 
+  "height": 40
+}

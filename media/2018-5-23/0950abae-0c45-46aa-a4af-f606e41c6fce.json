@@ -1,0 +1,186 @@
+{
+  "width": 90, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 70.110048, 
+  "stdout": [
+    [
+      0.09173, 
+      "Last login: Wed May 23 16:06:44 2018 from 192.168.56.1\r\r\n"
+    ], 
+    [
+      0.137441, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      56.908087, 
+      "l"
+    ], 
+    [
+      0.132835, 
+      "s"
+    ], 
+    [
+      0.672528, 
+      "\r\n"
+    ], 
+    [
+      0.010648, 
+      "anaconda-ks.cfg  \u001b[0m\u001b[01;34mautodev2\u001b[0m  \u001b[01;31mautodev2.zip\u001b[0m  \u001b[01;34mwebterminal\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.002471, 
+      "p"
+    ], 
+    [
+      0.123613, 
+      "w"
+    ], 
+    [
+      0.230989, 
+      "f"
+    ], 
+    [
+      0.167722, 
+      "\r\n"
+    ], 
+    [
+      0.007317, 
+      "-bash: pwf: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.348771, 
+      "i"
+    ], 
+    [
+      0.139789, 
+      "f"
+    ], 
+    [
+      0.203823, 
+      "c"
+    ], 
+    [
+      0.081181, 
+      "o"
+    ], 
+    [
+      0.207231, 
+      "n"
+    ], 
+    [
+      0.106435, 
+      "f"
+    ], 
+    [
+      0.096573, 
+      "i"
+    ], 
+    [
+      0.248092, 
+      "g"
+    ], 
+    [
+      0.306985, 
+      "\r\n"
+    ], 
+    [
+      0.020435, 
+      "enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255\r\n        inet6 fe80::3091:3e9f:ee63:abb6  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:54:fc:44  txqueuelen 1000  (Ethernet)\r\n        RX packets 37328  bytes 49939857 (47.6 MiB)\r\n        RX errors 16  dropped 0  overruns 0  frame 0\r\n        TX packets 23117  bytes 1312747 (1.2 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n        device interrupt 19  base 0xd020  \r\n\r\nenp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 192.168.56.102  netmask 255.255.255.0  broadcast 192.168.56.255\r\n        inet6 fe80::2c11:4202:ec4f:a369  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:73:b0:ed  txqueuelen 1000  (Ethernet)\r\n        RX packets 57239  bytes 31749073 (30.2 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 40340  bytes 64459196 (61.4 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carri"
+    ], 
+    [
+      0.007526, 
+      "er 0  collisions 0\r\n\r\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\r\n        inet 127.0.0.1  netmask 255.0.0.0\r\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\r\n        loop  txqueuelen 1  (Local Loopback)\r\n        RX packets 5994928  bytes 554846018 (529.1 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 5994928  bytes 554846018 (529.1 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n\r\n[root@localhost ~]# "
+    ], 
+    [
+      2.152636, 
+      "c"
+    ], 
+    [
+      0.179544, 
+      "o"
+    ], 
+    [
+      0.173853, 
+      "c"
+    ], 
+    [
+      0.141046, 
+      "o"
+    ], 
+    [
+      0.347024, 
+      "\r\n"
+    ], 
+    [
+      0.008136, 
+      "-bash: coco: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.416409, 
+      "m"
+    ], 
+    [
+      0.224586, 
+      "m"
+    ], 
+    [
+      0.129796, 
+      "m"
+    ], 
+    [
+      0.313267, 
+      "\r\n"
+    ], 
+    [
+      0.012172, 
+      "-bash: mmm: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.696945, 
+      "q"
+    ], 
+    [
+      0.199206, 
+      "q"
+    ], 
+    [
+      0.167329, 
+      "q"
+    ], 
+    [
+      0.326182, 
+      "\r\n"
+    ], 
+    [
+      0.006655, 
+      "-bash: qqq: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.394519, 
+      "e"
+    ], 
+    [
+      0.215016, 
+      "x"
+    ], 
+    [
+      0.107247, 
+      "i"
+    ], 
+    [
+      0.298833, 
+      "t"
+    ], 
+    [
+      0.333675, 
+      "\r\nlogout\r\n"
+    ]
+  ], 
+  "height": 40
+}

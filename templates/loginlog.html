@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>登陆日志</title>
+
+    <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+
+    <!-- Data Tables -->
+    <link href="/static/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>登陆日志</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>用户</th>
+                                    <th>登陆地址</th>
+                                    <th class="text-center">日志</th>
+                                    <th>时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%   for  session in session_list %}
+                                <tr class="gradeX">
+                                    <td>{{ session.id }}</td>
+                                    <td>{{ session.user }}</td>
+                                    <td>{{ session.ip }}</td>
+                                    <td class="text-center">{{ session.action }}</td>
+                                    <td>{{ session.ctime }}</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>用户</th>
+                                    <th>登陆地址</th>
+                                    <th>日志</th>
+                                    <th>时间</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <script src="/static/plugins/jeditable/jquery.jeditable.js"></script>
+
+    <!-- Data Tables -->
+    <script src="/static/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/static/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-example').dataTable();
+        });
+    </script>
+
+
+</body>
+
+</html>

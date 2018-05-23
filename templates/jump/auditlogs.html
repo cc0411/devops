@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+     <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" href="/static/plugins/sweetalert/sweetalert.css">
+    <!-- Data Tables -->
+    <link href="/static/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- DataTables css -->
+    <link rel="stylesheet" href="/static/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/static/plugins/bootstrap-dialog/css/bootstrap-dialog.css">
+    <style>
+   .play-dialog .modal-dialog {
+        width: 58%;
+    }
+</style>
+    <title>审计</title>
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>审计管理</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                        <table class="table table-striped table-bordered table-hover dataTables-host">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>执行者</th>
+                                    <th>主机名</th>
+                                    <th>IP</th>
+                                    <th>开始时间</th>
+                                    <th>执行状态</th>
+                                    <th>动作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {%  for ele in audit_list %}
+                        <tr>
+                            <td>{{ ele.id }}</td>
+                                    <td>{{ ele.user.email }}</td>
+                                    <td>{{ ele.server.hostname }}</td>
+                                    <td>{{ ele.server.wip }}</td>
+                                    <td>{{ ele.start_time }}</td>
+                                    <td>{{ ele.is_finished }}</td>
+                                    <td class="text-center pull-left">
+                                    {% if ele.is_finished %}
+                                    <a class="btn btn-xs btn-primary play" onclick="play('{{ele.user.email}}','{{ele.server.wip}}','{{ele.start_time}}','{{ele.start_time}}','{% url 'sshlogplay' ele.id %}');">播放</a>
+                                    {% else %}
+                                    <a class="btn btn-xs btn-danger" onclick="kill('{{ele.channel}}','{{ele.user.email}}')">停止</a>
+                                    <a class="btn btn-xs btn-danger" onclick="monitor('{{ele.user.email}}','{{ele.server.wip}}','{{ele.start_time}}','{% url 'sshterminalmonitor' ele.id %}')">监控</a>
+                                    {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/jquery-ui-1.10.4.min.js"></script>
+<script src="/static/plugins/markdown/markdown.js"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/static/plugins/jeditable/jquery.jeditable.js"></script>
+    <!-- Data Tables -->
+<script src="/static/plugins/dataTables/jquery.dataTables.js"></script>
+<script src="/static/plugins/dataTables/dataTables.bootstrap.js"></script>
+<script src="/static/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="/static/plugins/bootstrap-select/js/i18n/defaults-en_US.js"></script>
+<script src="/static/plugins/json-view/jquery.jsonview.min.js"></script>
+<script src="/static/plugins/bootstrap-dialog/js/bootstrap-dialog.js"></script>
+<script src="/static/plugins/bootbox/bootbox.js" ></script>
+<script src="/static/plugins/toastr/toastr.min.js"></script>
+
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-host').dataTable();
+
+        });
+
+
+    </script>
+
+
+
+<script>
+function getCookie(name) {
+	var cookieValue = null;
+	if (document.cookie && document.cookie !== '') {
+		var cookies = document.cookie.split(';');
+		for (var i = 0; i < cookies.length; i++) {
+			var cookie = jQuery.trim(cookies[i]);
+			// Does this cookie string begin with the name we want?
+			if (cookie.substring(0, name.length + 1) === (name + '=')) {
+				cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+				break;
+			}
+		}
+	}
+	return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+	// these HTTP methods do not require CSRF protection
+	return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+	beforeSend: function(xhr, settings) {
+		if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+			xhr.setRequestHeader("X-CSRFToken", csrftoken);
+		}
+	}
+});
+toastr.options = {
+    "closeButton": false,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-center",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "5000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+}
+</script>
+    <script type="application/javascript">
+    function play(user,ip,start_time,end_time,url){
+        var div_username = ' user: '+'<span class="text-info">'+user+'' + '</span>';
+        var div_ip = ' server: '+'<span class="text-info">' + ip + '</span>';
+        var div_time = ' start time: ' + '<span class="text-info">'+start_time +'</span>' + ' end time: ' +'<span class="text-info">' + end_time + '</span>';
+        var title = div_username + div_ip + div_time;
+        BootstrapDialog.show({
+            title: title,
+            type: BootstrapDialog.TYPE_DEFAULT,
+            message:$('<div style="overflow: auto;background-color: rgba(0, 0, 0, 0);"></div>').load(url)
+        });
+        return false;
+    }
+    function kill(channel_name,user_name) {
+    var dialog = bootbox.confirm({
+        title: "<a class='text-danger'>"+'kick user ' + user_name +" out </a>",
+        message: 'Are you sure to kick user ' + user_name +' out ?',
+        buttons: {
+            confirm: {
+                label: 'kill',
+                className: 'btn-danger'
+            },
+            cancel: {
+                label: 'cancel',
+                className: 'btn-success'
+            }
+        },
+        callback: function (result) {
+            if (result){
+                $.ajax({
+                    type: "POST",
+                    url: '{% url 'sshterminalkill' %}',
+                    dataType: "json",
+                    data: {'channel_name':channel_name},
+                    success: function (data) {
+                        if (data['status']){
+                            toastr["success"](data['message']);
+                            setTimeout(function () {
+                                location.reload();
+                            },2000);
+                        }else{
+                            toastr["error"](data['message']);
+                        }
+                    },
+                    failure: function (errMsg) {
+                        toastr["error"](errMsg);
+                    },
+                });
+            }
+        }
+    });
+}
+function monitor(user,ip,start_time,url){
+        var div_username = ' user: '+'<span class="text-info">'+user+'' + '</span>';
+        var div_ip = ' server: '+'<span class="text-info">' + ip + '</span>';
+        var div_time = ' start time: ' + '<span class="text-info">'+start_time +'</span>';
+        var title = div_username + div_ip + div_time;
+        BootstrapDialog.show({
+            size: BootstrapDialog.SIZE_WIDE,
+            title: title,
+            type: BootstrapDialog.TYPE_DEFAULT,
+            message:$('<div style="overflow: auto;background-color: rgba(0, 0, 0, 0);"></div>').load(url),
+            draggable: true
+        });
+        return false;
+    }
+</script>
+</body>
+
+</html>

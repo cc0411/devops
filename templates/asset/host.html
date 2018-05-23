@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>主机管理</title>
+
+    <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+        <link rel="stylesheet" href="/static/plugins/sweetalert/sweetalert.css">
+    <!-- Data Tables -->
+    <link href="/static/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>主机管理</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div>
+                            <a  href="{% url 'asset_add' %}" class="btn btn-primary">添加</a>
+                            <a class="btn btn-danger  asset_all_del">批量删除</a>
+                            <a href="/static/download/assets.csv" class="btn btn-primary">导出模板</a>
+                            <a href="{%  url 'export' %}" class="btn btn-primary">导出资产</a></div>
+                        <table class="table table-striped table-bordered table-hover dataTables-host">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>ID</th>
+                                    <th>主机名</th>
+                                    <th>外网IP</th>
+                                    <th>内网IP</th>
+                                    <th>系统类型</th>
+                                    <th>机房</th>
+                                    <th>主机组</th>
+                                    <th>创建时间</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                              {%  for asset in asset_list %}
+                                <tr class="gradeX" id="{{ asset.id }}">
+                                    <td><input type="checkbox"></td>
+                                    <td>{{ asset.id }}</td>
+                                    <td>{{ asset.hostname }}</td>
+                                    <td>{{ asset.wip }}</td>
+                                    <td>{{ asset.lip }}</td>
+                                    <td>{{ asset.system_type }}</td>
+                                    <td>{% for i in asset.idc_set.all %}<a href="{%  url 'idc_asset' i.id  %}" id="{{ i.id}}">{{i.name }}<br></a>{% endfor %}</td>
+                                    <td>{%  for g  in asset.hostgroup_set.all %}<a href="{%  url 'group_asset' g.id  %}" id="{{ g.id}}">{{g.name }}<br></a>{% endfor %}</td>
+                                    <td>{{ asset.ctime}}</td>
+                                    <td><a class="btn btn-primary  btn-xs "
+                                                   href="{% url 'asset_edit'  asset.id %}">编辑</a>
+                                                <a class="btn btn-danger  btn-xs  asset_del" data-toggle="modal"
+                                                   data-target="#myModal1" id="{{  asset.id }}">删除
+                                                </a>
+                                                <a class="btn btn-primary  btn-xs "
+                                                   href="#">性能</a>
+                                                </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+
+
+    <script src="/static/plugins/jeditable/jquery.jeditable.js"></script>
+
+    <!-- Data Tables -->
+    <script src="/static/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="/static/plugins/dataTables/dataTables.bootstrap.js"></script>
+    <script src="/static/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- 自定义js --
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- Page-Level Scripts -->
+    <script>
+        $(document).ready(function () {
+            $('.dataTables-host').dataTable();
+
+        });
+       $(function () {
+
+       $(document).on('click','.asset_del',function () {
+
+              $.ajaxSetup({headers: {"X-CSRFToken": '{{ csrf_token }}'}});
+                    var id = $(this).attr('id');
+                    console.log(id)
+
+                    swal({
+                        title: "你确定删除",
+                        text: "你将无法恢复",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: false
+                    }, function () {
+
+                        $.ajax({
+                            url: "{% url 'asset_del' %}",
+                            type: 'POST',
+                            data: {'nid': id},
+                            success: function (data) {
+                                var obj = JSON.parse(data);
+                                if (obj.status) {
+                                    swal({title: "删除", text: "已成功删除", type: "success"}, function () {
+                                        window.location.reload();
+                                    })
+                                } else {
+                                    swal("错误", "删除" + "[ " + obj.error + " ]" + "遇到错误", "error");
+                                }
+                            }
+                        });
+
+
+                    });
+
+                });
+
+
+       $(document).on('click', '.asset_all_del', function () {
+
+                    swal({
+
+                        title: "你确定删除",
+                        text: "你将无法恢复",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+
+                        closeOnConfirm: false
+                    }, function () {
+                        $.ajax({
+                            headers: {"X-CSRFToken": '{{ csrf_token }}'},
+                            url: "{%  url 'asset_del' %}",
+                            type: 'POST',
+                            data: $('#del_form_asset_all').serialize(),
+                            success: function (data) {
+                                var obj = JSON.parse(data);
+                                if (obj.status) {
+                                    swal({title: "删除", text: "已成功删除", type: "success"}, function () {
+                                        window.location.reload();
+                                    })
+                                } else {
+                                    swal("错误", "删除" + "[ " + obj.error + " ]" + "遇到错误", "error");
+                                }
+                            }
+                        });
+
+
+                    });
+                });
+
+
+
+       })
+
+
+    </script>
+</body>
+
+</html>
