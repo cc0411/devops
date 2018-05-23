@@ -38,6 +38,7 @@ urlpatterns = [
     url(r'^session/$', views.LoginLogList.as_view(), name='session'),
     url(r'^asset/', include('asset.urls'), ),
     url(r'^jump/', include('jump.urls'), ),
+    url(r'^task/',include('tasks.urls')),
     url(r'^api/',include(router.urls)),
 ]
 

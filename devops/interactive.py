@@ -1,5 +1,4 @@
 #-*- coding:utf-8 -*-
-# -*- coding: utf-8 -*-
 import socket
 import sys
 from paramiko.py3compat import u

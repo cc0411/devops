@@ -1,0 +1,38 @@
+<div class="col-sm-3">
+    <div class="panel">
+        <div class="panel-heading">
+            <h3 class="panel-title">可操作主机列表</h3>
+        </div>
+    <div class="panel-body">
+        <div class=" list-group">
+            {%  for g in request.user.host_groups.all%}
+            <a class="list-group-item" onclick="ItemToggle(this)" href="#"> {{ g.name }}
+                <span class="badge badge-primary">{{ g.servers.count}}</span></a>
+                <ul>
+                {%  for host in g.servers.all %}
+                <li> <input type="checkbox" tag="host-select" value="{{ host.id }}" name="id">
+                    {{ host.hostname }}-{{ host.wip }}
+                </li>
+                    {% endfor %}
+                </ul>
+
+            {%  endfor %}
+
+        <a  class="list-group-item" onclick="ItemToggle(this)" href="#" >未分组主机
+            <span class="badge badge-primary">{{ request.user.bind_hosts.select_related.count}}</span>
+        </a>
+        <ul>
+            {%  for host in request.user.bind_hosts.select_related %}
+            <li><input type="checkbox" tag="host-select" value="{{ host.id }}" name="id">
+            {{ host.hostname }}-{{ host.wip }}
+            </li>
+            {%  endfor %}
+
+        </ul>
+
+        </div>
+
+    </div>
+
+        </div>
+    </div>

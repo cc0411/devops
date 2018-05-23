@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'jump',
     'devops',
     'channels',
+    'tasks',
 ]
 AUTH_USER_MODEL = 'index.UserProfile'
 MIDDLEWARE = [
@@ -194,3 +195,4 @@ JET_THEMES = [
 ]
 # 是否展开所有菜单
 JET_SIDE_MENU_COMPACT = True  # 菜单不是很多时建议为TRUE
+DOWNLOAD_DIR = "%s/downloads/" % BASE_DIR
