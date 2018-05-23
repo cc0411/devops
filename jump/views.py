@@ -4,7 +4,7 @@ from django.views.generic import View
 from django.shortcuts import render_to_response,render
 from django.http import JsonResponse
 from asset.models import HostGroup
-from jump.models import CommandsSequence,Audit
+from jump.models import Audit
 try:
     import simplejson as json
 except ImportError:
@@ -28,82 +28,6 @@ class Index(LoginRequiredMixin,View):
 
         return render(request,'jump/index.html')
 
-class Commands(LoginRequiredMixin,View):
-    def get(self,request):
-        server_groups=HostGroup.objects.all()
-        return render_to_response('webterminal/commandcreate.html',locals())
-
-    def post(self,request):
-        if request.is_ajax():
-            try:
-                data = json.loads(request.body)
-                if data['action'] == 'create':
-                    obj = CommandsSequence.objects.create(name=data['name'],commands=data['commands'])
-                    for group in data['group']:
-                        obj.group.add(HostGroup.objects.get(name=group))
-                    obj.save()
-                    return JsonResponse({'status':True,'message':'%s create success!' %(smart_str(data.get('name',None)))})
-                elif data['action'] == 'update':
-                    try:
-                        obj = CommandsSequence.objects.get(id=data.get('id',None))
-                        obj.commands = data['commands']
-                        [obj.group.remove(group) for group in obj.group.all()]
-                        for group in data['group']:
-                            obj.group.add(HostGroup.objects.get(name=group))
-                        obj.save()
-                        return JsonResponse({'status':True,'message':'%s update success!' %(smart_str(data.get('name',None)))})
-                    except ObjectDoesNotExist:
-                        return JsonResponse({'status':False,'message':'Request object not exist!'})
-                elif data['action'] == 'delete':
-                    try:
-                        obj = CommandsSequence.objects.get(id=data.get('id',None))
-                        taskname = obj.name
-                        obj.delete()
-                        return JsonResponse({'status':True,'message':'Delete task %s success!' %(taskname)})
-                    except ObjectDoesNotExist:
-                        return JsonResponse({'status':False,'message':'Request object not exist!'})
-                else:
-                    return JsonResponse({'status':False,'message':'Illegal action.'})
-            except ObjectDoesNotExist:
-                return JsonResponse({'status':False,'message':'Please input a valid group name!' })
-            except IntegrityError:
-                return JsonResponse({'status':False,'message':'Task name:%s already exist,Please use another name instead!' %(data['name']) })
-            except KeyError:
-                return JsonResponse({'status':False,'message':"Invalid parameter,Please report it to the adminstrator!" })
-            except Exception,e:
-                import traceback
-                print traceback.print_exc()
-                return JsonResponse({'status':False,'message':'Some error happend! Please report it to the adminstrator! Error info:%s' %(smart_str(e)) })
-        else:
-            pass
-
-class CommandExecute(LoginRequiredMixin,View):
-    def get(self,request):
-        commands=CommandsSequence.objects.all()
-        return render_to_response('webterminal/commandexecute.html',locals())
-
-class CommandExecuteList(LoginRequiredMixin,ListView):
-    model = CommandsSequence
-    template_name = 'webterminal/commandslist.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(CommandExecuteList, self).get_context_data(**kwargs)
-        context['server_groups'] = HostGroup.objects.all()
-        return context
-
-class CommandExecuteDetailApi(LoginRequiredMixin,View):
-
-    def post(self,request):
-        if request.is_ajax():
-            id = request.POST.get('id',None)
-            try:
-                data = CommandsSequence.objects.get(id=id)
-                return JsonResponse({'status':True,'name':data.name,'commands':json.loads(data.commands),'data':{'name':data.name,'commands':json.loads(data.commands),'group':[ group.name for group in data.group.all() ]}})
-            except ObjectDoesNotExist:
-                return JsonResponse({'status':False,'message':'Request object not exist!'})
-        else:
-            return JsonResponse({'status':False,'message':'Method not allowed!'})
-
 class SshLogList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
     model = Audit
     template_name = 'jump/auditlogs.html'
@@ -112,7 +36,6 @@ class SshLogList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
     queryset =  Audit.objects.all()
     raise_exception = True
     ordering = ('-id'),
-
 
 class SshLogPlay(LoginRequiredMixin,PermissionRequiredMixin,DetailView):
     model = Audit
@@ -125,7 +48,6 @@ class SshLogPlay(LoginRequiredMixin,PermissionRequiredMixin,DetailView):
         objects = kwargs['object']
         context['logpath'] = '{0}{1}-{2}-{3}/{4}.json'.format(MEDIA_URL,objects.start_time.year,objects.start_time.month,objects.start_time.day,objects.log)
         return context
-
 class SshTerminalMonitor(LoginRequiredMixin,DetailView):
     model = Audit
     template_name = 'jump/auditmonitor.html'

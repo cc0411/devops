@@ -31,22 +31,3 @@ class Audit(models.Model):
             ("can_view_audit", ("可以查看操作日志")),
             ("can_play_audit", ("可以播放操作日志")),
         )
-
-class CommandsSequence(models.Model):
-    name = models.CharField(max_length=40,verbose_name='Task name',blank=False,unique=True)
-    commands = models.TextField(verbose_name='Task commands',blank=False)
-    group = models.ManyToManyField(HostGroup,verbose_name='Server group you want to execute')
-
-    def __unicode__(self):
-        return self.name
-
-    def clean(self):
-        try:
-            json.dumps(self.commands)
-        except Exception:
-            raise ValidationError('Commands sequence is not valid json type')
-
-    def save(self, *args, **kwargs):
-        if isinstance(self.commands,(list)):
-            self.commands = json.dumps(self.commands)
-        super(CommandsSequence,self).save(*args, **kwargs)

@@ -1,0 +1,122 @@
+{
+  "width": 113, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 12.11376, 
+  "stdout": [
+    [
+      0.007335, 
+      "Last login: Sun May 13 23:44:59 2018 from 192.168.10.1\r\r\n"
+    ], 
+    [
+      0.016033, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      2.478248, 
+      "ls"
+    ], 
+    [
+      0.540318, 
+      "\r\n"
+    ], 
+    [
+      0.003548, 
+      "anaconda-ks.cfg  a.xtt   \u001b[0m\u001b[01;34mguacamole-server-0.9.14\u001b[0m         \u001b[01;34mwebterminal\u001b[0m\r\na.txt            \u001b[01;34mDevOps\u001b[0m  \u001b[01;31mguacamole-server-0.9.14.tar.gz\u001b[0m  \u001b[01;34mwebterminal2\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.501491, 
+      "e"
+    ], 
+    [
+      0.724865, 
+      "\b\u001b[K"
+    ], 
+    [
+      1.010039, 
+      "i"
+    ], 
+    [
+      0.158119, 
+      "f"
+    ], 
+    [
+      0.215516, 
+      "c"
+    ], 
+    [
+      0.072579, 
+      "o"
+    ], 
+    [
+      0.207355, 
+      "n"
+    ], 
+    [
+      0.177939, 
+      "f"
+    ], 
+    [
+      0.150071, 
+      "i"
+    ], 
+    [
+      0.295973, 
+      "g"
+    ], 
+    [
+      0.391571, 
+      "\r\n"
+    ], 
+    [
+      0.003635, 
+      "enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 10.0.2.15  netmask 255.255.255.0  broadcast 10.0.2.255\r\n        inet6 fe80::3e21:25f5:d5fe:7c3c  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:14:36:10  txqueuelen 1000  (Ethernet)\r\n        RX packets 583245  bytes 654744616 (624.4 MiB)\r\n        RX errors 123  dropped 0  overruns 0  frame 0\r\n        TX packets 251755  bytes 14175345 (13.5 MiB)\r\n        TX errors 10  dropped 0 overruns 0  carrier 10  collisions 0\r\n        device interrupt 19  base 0xd020  \r\n\r\nenp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\r\n        inet 192.168.10.102  netmask 255.255.255.0  broadcast 192.168.10.255\r\n        inet6 fe80::4b44:29aa:ec83:8e77  prefixlen 64  scopeid 0x20<link>\r\n        ether 08:00:27:7f:a9:75  txqueuelen 1000  (Ethernet)\r\n        RX packets 50803  bytes 5005528 (4.7 MiB)\r\n        RX errors 1  dropped 0  overruns 0  frame 0\r\n        TX packets 48400  bytes 39273703 (37.4 MiB)\r\n        TX errors 0  dropped 0 overruns 0"
+    ], 
+    [
+      0.002408, 
+      "  carrier 0  collisions 0\r\n        device interrupt 16  base 0xd240  \r\n\r\nlo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536\r\n        inet 127.0.0.1  netmask 255.0.0.0\r\n        inet6 ::1  prefixlen 128  scopeid 0x10<host>\r\n        loop  txqueuelen 1  (Local Loopback)\r\n        RX packets 5899393  bytes 604547306 (576.5 MiB)\r\n        RX errors 0  dropped 0  overruns 0  frame 0\r\n        TX packets 5899393  bytes 604547306 (576.5 MiB)\r\n        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0\r\n\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.595628, 
+      "p"
+    ], 
+    [
+      0.143172, 
+      "w"
+    ], 
+    [
+      0.327365, 
+      "d"
+    ], 
+    [
+      0.19304, 
+      "\r\n/root\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.704282, 
+      "e"
+    ], 
+    [
+      0.286617, 
+      "x"
+    ], 
+    [
+      0.182931, 
+      "i"
+    ], 
+    [
+      0.313398, 
+      "t"
+    ], 
+    [
+      0.39128, 
+      "\r\nlogout\r\n"
+    ]
+  ], 
+  "height": 40
+}

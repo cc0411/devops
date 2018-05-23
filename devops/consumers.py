@@ -11,7 +11,7 @@ import sys
 from django.utils.encoding import smart_unicode
 from django.core.exceptions import ObjectDoesNotExist
 from asset.models import Assets,HostGroup
-from jump.models import CommandsSequence,Audit
+from jump.models import Audit
 from index.models import UserProfile
 from devops.sudoterminal import ShellHandlerThread
 import ast
@@ -129,58 +129,6 @@ class webterminal(WebsocketConsumer):
             self.closessh()
             self.close()
 
-
-class CommandExecute(WebsocketConsumer):
-    http_user = True
-    http_user_and_session = True
-    channel_session = True
-    channel_session_user = True
-
-    def connect(self, message):
-        self.message.reply_channel.send({"accept": True})
-        #permission auth
-
-    def disconnect(self, message):
-        self.message.reply_channel.send({"accept":False})
-        self.close()
-
-    def receive(self,text=None, bytes=None, **kwargs):
-        try:
-            if text:
-                data = json.loads(text)
-                if isinstance(data,list):
-                    return
-                if data.has_key('parameter'):
-                    parameter = data['parameter']
-                    taskname = parameter.get('taskname',None)
-                    groupname = parameter.get('groupname',None)
-                    ip = parameter.get('ip',None)
-                    if taskname and ip and groupname:
-                        server_list = [ ip ]
-                    elif taskname and not ip and not groupname:
-                        server_list = []
-                        [server_list.extend([ server.wip for server in HostGroup.objects.get(name=group.name).servers.all() ]) for group in CommandsSequence.objects.get(name = taskname).group.all() ]
-                    elif taskname and groupname and not ip:
-                        server_list = [ server.wip for server in HostGroup.objects.get(name=groupname).servers.all() ]
-                    commands = json.loads(CommandsSequence.objects.get(name = taskname).commands)
-                    if isinstance(commands,(basestring,str,unicode)):
-                        commands = ast.literal_eval(commands)
-
-                    #Run commands
-                    commandshell = ShellHandlerThread(message=self.message,commands=commands,server_list=server_list)
-                    commandshell.setDaemon = True
-                    commandshell.start()
-
-                else:
-                    #illegal
-                    self.message.reply_channel.send({"text":json.dumps(['stdout','\033[1;3;31mIllegal parameter passed to the server!\033[0m'])},immediately=True)
-                    self.close()
-            if bytes:
-                data = json.loads(bytes)
-        except Exception,e:
-            import traceback
-            print traceback.print_exc()
-            self.message.reply_channel.send({"text":json.dumps(['stdout','\033[1;3;31mSome error happend, Please report it to the administrator! Error info:%s \033[0m' %(smart_unicode(e)) ] )},immediately=True)
 
 class SshTerminalMonitor(WebsocketConsumer):
 
