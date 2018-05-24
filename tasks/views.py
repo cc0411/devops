@@ -7,6 +7,8 @@ from django.http import  HttpResponse
 from django.core import  serializers
 from tasks.utils.multitask import MultiTaskManger
 from tasks import  models
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.views.generic import ListView
 # Create your views here.
 
 
@@ -38,3 +40,12 @@ def task_result(request):
     sub_tasklog_objs = models.TaskLogDetail.objects.filter(task_id=task_id)
     log_data = list(sub_tasklog_objs.values('id','status','result'))
     return HttpResponse(json.dumps(log_data))
+
+class TasklogList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
+    template_name = 'ansible/tasklog.html'
+    model = models.TaskLogDetail
+    context_object_name =  "tasklog_list"
+    queryset = models.TaskLogDetail.objects.all()
+    ordering = ('-id'),
+    permission_required = 'task.can_view_session'
+    raise_exception = True

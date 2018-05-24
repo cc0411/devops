@@ -39,7 +39,7 @@ def  file_transfer(sub_task_obj,task_data):
             sftp.put(task_data["local_file_path"], task_data["remote_file_path"])
             result = "file sends successd"
         else:
-            local_file_path = conf.settings.DOWNLOAD_DIR
+            local_file_path = settings.DOWNLOAD_DIR
             if  not os.path.isdir("%s%s" %(local_file_path,task_obj.id)):
                 os.mkdir("%s%s" %local_file_path,task_obj.id)
             filename = "%s.%s" %(host.wip,task_data["remote_file_path"].split('/')[-1])
@@ -55,12 +55,14 @@ def  file_transfer(sub_task_obj,task_data):
     sub_task_obj.save()
 
 if __name__ == "__main__":
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     sys.path.append(base_dir)
+    print(base_dir)
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "devops.settings")
     import django
     django.setup()
-    from django import conf
+    from devops import settings
     from tasks import models
     if len(sys.argv) == 1:
         exit("task id not provided!")

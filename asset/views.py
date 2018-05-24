@@ -4,7 +4,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.views.generic import TemplateView, ListView, View, CreateView, UpdateView, DetailView
 from asset import  models,forms
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 import xlwt,time
 import  csv,codecs
