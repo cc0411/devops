@@ -1,17 +1,17 @@
-本系统基于python2.7.10+centos7.2系统开发，目前已实现了webshell，cmdb，批量任务和批量文件管理，请大家star  \<br>
+本系统基于python2.7.10+centos7.2系统开发，目前已实现了webshell，cmdb，批量任务和批量文件管理，请大家star
 ======
 
-使用方法  \<br>
+使用方法  
 ------
 # 1.请先安装模块
-pip install -r requirements.txt \<br>
+pip install -r requirements.txt 
 #  2.数据库初始化，目前使用sqllite，有需要的可以更改setting修改为mysql
-python manage.py  makemigrations \<br>
-python manage.py migrate \<br>
+python manage.py  makemigrations 
+python manage.py migrate 
 # 3.创建系统管理员账户
-python manage.py createsuperuser \<br>
+python manage.py createsuperuser 
 #4.启动
-python manage.py  runserver 0.0.0.0:8000 \<br>
+python manage.py  runserver 0.0.0.0:8000 
 
 系统使用说明
 # 一.资产管理实现以下几个功能
