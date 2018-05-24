@@ -6,11 +6,11 @@
 # 1.请先安装模块
 pip install -r requirements.txt 
 #  2.数据库初始化，目前使用sqllite，有需要的可以更改setting修改为mysql
-python manage.py  makemigrations 
+python manage.py  makemigrations</br> 
 python manage.py migrate 
 # 3.创建系统管理员账户
 python manage.py createsuperuser 
-#4.启动
+# 4.启动
 python manage.py  runserver 0.0.0.0:8000 
 
 系统使用说明
