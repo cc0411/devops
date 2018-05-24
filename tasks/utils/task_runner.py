@@ -31,8 +31,9 @@ def  ssh_cmd(sub_task_obj):
 
 def  file_transfer(sub_task_obj,task_data):
     host = sub_task_obj.host
+    print(host)
     try:
-        t = paramiko.Transport(host.wip,host.port)
+        t = paramiko.Transport(host.wip,host.ssh_port)
         t.connect(username = host.user.username,password=host.user.password)
         sftp = paramiko.SFTPClient.from_transport(t)
         if task_data['file_transfer_type'] =='send':
@@ -40,11 +41,17 @@ def  file_transfer(sub_task_obj,task_data):
             result = "file sends successd"
         else:
             local_file_path = settings.DOWNLOAD_DIR
-            if  not os.path.isdir("%s%s" %(local_file_path,task_obj.id)):
-                os.mkdir("%s%s" %local_file_path,task_obj.id)
-            filename = "%s.%s" %(host.wip,task_data["remote_file_path"].split('/')[-1])
-            sftp.get(task_data["remote_file_path"], "%s%s/%s"% (local_file_path,sub_task_obj.task.id, filename))
-            result = "download remote file [%s] succeed!"  % task_data["remote_file_path"]
+
+            #if  not os.path.isdir("%s%s" %(local_file_path,task_obj.id)):
+            #    os.mkdir("%s%s" %local_file_path,task_obj.id)
+            #filename = "%s.%s" %(host.wip,task_data["remote_file_path"].split('/')[-1])
+            #sftp.get(task_data["remote_file_path"], "%s%s/%s"% (local_file_path,sub_task_obj.task.id, filename))
+            #result = "download remote file [%s] succeed!"  % task_data["remote_file_path"]
+            if  not os.path.isdir("{}{}".format(local_file_path,task_obj.id)):
+                os.mkdir("{}{}".format(local_file_path,task_obj.id))
+            filename = "{}.{}".format(host.wip,task_data["remote_file_path"].split('/')[-1])
+            sftp.get(task_data["remote_file_path"], "{}{}/{}".format(local_file_path,sub_task_obj.task.id, filename))
+            result = "download remote file {} succeed!".format(task_data["remote_file_path"])
         t.close()
         sub_task_obj.status =1
     except Exception as e:

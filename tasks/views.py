@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.contrib.auth.decorators import  login_required
-from django.http import  JsonResponse
-from asset import  models
 from django.http import  HttpResponse
-from django.core import  serializers
 from tasks.utils.multitask import MultiTaskManger
 from tasks import  models
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin

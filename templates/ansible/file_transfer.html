@@ -30,8 +30,8 @@
                         <option value="send">向远程发送文件</option>
                         <option value="get">从远程下载文件</option>
                     </select>
-                    <input type="text" id='local_file_path'  class="form-control" placeholder="本地文件目录">
-                    <input type="text" id='remote_file_path' class="form-control" placeholder="远程路径">
+                    <input type="text" id='local_file_path'  class="form-control" placeholder="本地文件目录,即当前程序运行服务器的目录，如/root/a.txt">
+                    <input type="text" id='remote_file_path' class="form-control" placeholder="远程路径,远程主机的文件目录，如/tmp/a.txt">
 
                      <input type="button"  id="task_submit_btn" onclick="PostTask(this,'file_transfer')" class="btn btn-success pull-right" value="执行">
 
