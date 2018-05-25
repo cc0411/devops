@@ -50,3 +50,5 @@ python manage.py  runserver 0.0.0.0:8000
 ![screenshots](./snapshot/权限审计.png)
 如果该用户没有权限，打开页面时会提示403
 ![screenshots](./snapshot/权限审计2.png)
+# 八，增加双因子认证，登录时需要密码加随机动态口令
+IOS系统请在appstore搜索freeotp，安卓用户请自行百度
