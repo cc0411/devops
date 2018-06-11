@@ -44,3 +44,6 @@ chardet==3.0.4
 feedparser==5.2.1
 django_otp
 qrcode
+celery==3.1.25
+
+
