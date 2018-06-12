@@ -35,7 +35,7 @@ txaio==2.10.0
 zope.interface==4.4.3
 ansible==2.4.2.0
 flower==0.9.2
-django-celery==3.2.2
+django-celery
 redis==2.10.6
 django-jet==1.0.7
 xlrd==1.1.0
@@ -44,6 +44,6 @@ chardet==3.0.4
 feedparser==5.2.1
 django_otp
 qrcode
-celery==3.1.25
+django-celery-results==1.0.1
 
 

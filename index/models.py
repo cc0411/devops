@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from django.db import models
 import django
 from asset.models import HostGroup,Assets

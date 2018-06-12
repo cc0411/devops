@@ -15,22 +15,13 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-import djcelery
-#   celery
-djcelery.setup_loader()
-BROKER_URL = 'redis://127.0.0.1:6379/1'  # 消息存储数据存储在仓库1
 
-CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend'  # 指定 Backend
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_TIMEZONE = 'Asia/Shanghai'
+# celery
 
-CELERY_CREATE_MISSING_QUEUES = True
-CELERYD_CONCURRENCY = 10
-CELERYD_FORCE_EXECV = True
-CELERYD_MAX_TASKS_PER_CHILD = 100
-CELERY_DISABLE_RATE_LIMITS = True
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'redis://localhost:6379/1'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
 
 # 这是使用了django-celery默认的数据库调度模型,任务执行周期都被存在你指定的orm数据库中
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
@@ -70,7 +61,9 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',
     'django_otp.plugins.otp_hotp',
     'django_otp.plugins.otp_static',
-    'djcelery',
+    'django_celery_results',
+    'django_celery_beat',
+
 ]
 AUTH_USER_MODEL = 'index.UserProfile'
 MIDDLEWARE = [

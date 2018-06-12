@@ -1,14 +1,11 @@
-# -*- coding:utf-8 -*-
-from __future__ import absolute_import, unicode_literals
+#-*- coding:utf-8 -*-
 
-import time
+#from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 
 
 @shared_task
-def delay(x, y):
-    time.sleep(10)
-    print('the sum is:',x+y)
+def add(x, y):
     return x + y
 
 
