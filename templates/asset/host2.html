@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/static/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/static/css/animate.css" rel="stylesheet">
+    <link href="/static/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="/static/plugins/sweetalert/sweetalert.css">
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-sm-12">
+        <!-- Example Pagination -->
+        <div id="toolbar">
+            <a  href="{% url 'asset_add' %}" class="btn btn-primary">添加</a>
+            <a class="btn btn-danger  asset_all_del">批量删除</a>
+            <a href="/static/download/assets.csv" class="btn btn-primary">导出模板</a>
+            <a href="{%  url 'export' %}" class="btn btn-primary">导出资产</a></div>
+        </div>
+
+        <table id="hostTable" class="table table-hover"></table>
+    </div>
+    <!-- End Example Pagination -->
+</div>
+
+    <!-- 全局js -->
+    <script src="/static/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="/static/js/content.js?v=1.0.0"></script>
+
+
+    <!-- Bootstrap table -->
+    <script src="/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="/static/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/static/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(function () {
+
+
+        var table = $('#hostTable').bootstrapTable(
+            {
+                url: "{% url 'assetjson' %}",               //请求url
+                method:'get',
+                dataField: "rows",       //服务器返回数据放的键值
+                search: true,           //是否搜索
+                pagination: true,        //是否分页
+                sortable: true,                     //是否启用排序
+                pageNumber: 1,       //初始化加载第一页
+                pageSize: 1,           //每页的记录行数
+                pageList: [10, 20, 50, 100], //可供选择的每页的行数
+                sidePagination: "server",//服务器端分页
+                dataType: "json",       //返回数据类
+                searchAlign: "right",     //查询框对其方式
+                sortName: "pk",      //定义默认排序列
+                sortOrder: "desc",       //定义默认排序规则
+                queryParamsType: "limit",//查询参数组织方式
+                queryParams: function getParams(params) {
+                    params.other = "otherInfo";
+                    return params;
+                },                      //传递参数
+                iconSize: 'outline',
+                showRefresh: true,       // 刷新按钮
+                showColumns: true,       //列选择按钮
+                buttonsAlign: "right",    // 按钮对齐方式
+                toolbar: "#toolbar",     //指定工具栏
+                toolbarAlign: "left",   //工具栏对齐方式
+                striped: true,           //是否显示间隔色
+                cache: false,            //是否使用缓存，默认true
+
+                columns: [
+                    {
+                        checkbox: true,
+                        width: '5%'
+                    },
+                    {
+                        field: 'hostname',//键名
+                        title: '主机名',//标题
+                        sortable: true,//是否可排序
+                        width: '10%',
+
+                    },
+                    {
+                        field: 'lip',//键名
+                        title: '内网地址',//标题
+                        sortable: true,//是否可排序
+                        width: '10%',
+
+                    },
+                    {
+                        field: 'wip',
+                        title: '外网地址',
+                        sortable: true,
+                        width: '10%'
+                    },
+                    {
+                        field: 'idc',
+                        title: '机房',
+                        sortable: true,
+                        width: '10%',
+                    },
+                    {
+                        field: 'system_type',
+                        title: '系统类型',
+                        sortable: true,
+                        width: '7%'
+                    },
+                    {
+                        field: 'group',
+                        title: '主机组',
+                        sortable: true,
+                        width: '10%'
+                    },
+                    {
+                        field: 'status',
+                        title: '状态',
+                        sortable: true,
+                        width: '5%',
+                    },
+                    {
+                        field: 'utime',
+                        title: '更新时间',
+                        width: '10%'
+                    },
+                    {
+                        field: 'ctime',
+                        title: '创建日期',
+                        sortable: true,
+                        width: '10%'
+                    },
+
+                    {
+                        title: '操作',
+                        field: 'pk',
+                        align: 'center',
+                        width: '15%',
+                        formatter: function (value, row, index) {
+
+                         return  '<a class="btn btn-primary  btn-xs" href="/asset/asset_edit/'+ value+ '">编辑</a><a class="btn btn-danger  btn-xs  asset_del" data-toggle="modal" data-target="#myModal1" id="' +row.pk+ '">删除</a><a class="btn btn-primary  btn-xs" href="#">性能</a>';
+
+                        }
+                    }
+                ],
+                locale: "zh-CN",   //中文支持
+                detailView: false   //是否显示详情折叠
+            });
+
+
+        $(function () {
+
+
+       $(document).on('click','.asset_del',function () {
+
+              $.ajaxSetup({headers: {"X-CSRFToken": '{{ csrf_token }}'}});
+                    var id = $(this).attr('id');
+                    console.log(id)
+
+                    swal({
+                        title: "你确定删除",
+                        text: "你将无法恢复",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+                        closeOnConfirm: false
+                    }, function () {
+
+                        $.ajax({
+                            url: "{% url 'asset_del' %}",
+                            type: 'POST',
+                            data: {'nid': id},
+                            success: function (data) {
+                                var obj = JSON.parse(data);
+                                if (obj.status) {
+                                    swal({title: "删除", text: "已成功删除", type: "success"}, function () {
+                                        window.location.reload();
+                                    })
+                                } else {
+                                    swal("错误", "删除" + "[ " + obj.error + " ]" + "遇到错误", "error");
+                                }
+                            }
+                        });
+
+
+                    });
+
+                });
+
+
+       $(document).on('click', '.asset_all_del', function () {
+
+                    swal({
+
+                        title: "你确定删除",
+                        text: "你将无法恢复",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定",
+
+                        closeOnConfirm: false
+                    }, function () {
+                        $.ajax({
+                            headers: {"X-CSRFToken": '{{ csrf_token }}'},
+                            url: "{%  url 'asset_del' %}",
+                            type: 'POST',
+                            data: $('#del_form_asset_all').serialize(),
+                            success: function (data) {
+                                var obj = JSON.parse(data);
+                                if (obj.status) {
+                                    swal({title: "删除", text: "已成功删除", type: "success"}, function () {
+                                        window.location.reload();
+                                    })
+                                } else {
+                                    swal("错误", "删除" + "[ " + obj.error + " ]" + "遇到错误", "error");
+                                }
+                            }
+                        });
+
+
+                    });
+                });
+
+
+
+       })
+    });
+
+</script>
+</body>
+
+</html>

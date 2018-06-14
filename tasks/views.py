@@ -216,7 +216,8 @@ class ToolsAllDel(LoginRequiredMixin, PermissionRequiredMixin,View):
     工具删除
     """
     model = Tools
-
+    permission_required = 'tasks.can_delete_tools'
+    raise_exception = True
     @staticmethod
     def post(request):
         ret = {'status': True, 'error': None, }
@@ -390,7 +391,7 @@ class VarsAdd(LoginRequiredMixin, PermissionRequiredMixin,CreateView):
     """
     model = Variable
     form_class = forms.VarsForm
-    template_name = 'tasks/vars-add-update.html'
+    template_name = 'ansible/vars-add-update.html'
     success_url = reverse_lazy('varlist')
     permission_required = 'tasks.can_add_var'
     raise_exception = True
@@ -414,6 +415,8 @@ class VarsAllDel(LoginRequiredMixin, PermissionRequiredMixin,View):
     工具删除
     """
     model = Variable
+    permission_required = 'tasks.can_delete_var'
+    raise_exception = True
 
     @staticmethod
     def post(request):

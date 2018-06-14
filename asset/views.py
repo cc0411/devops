@@ -8,6 +8,9 @@ from django.contrib.auth.decorators import login_required
 import xlwt,time
 import  csv,codecs
 from io import StringIO
+from datetime import date, datetime
+import  json
+from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 class AssetList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
     template_name = 'asset/host.html'
@@ -17,6 +20,17 @@ class AssetList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
     ordering = ('-id'),
     permission_required = 'asset.can_view_asset'
     raise_exception = True
+
+class  GetAssetJson(LoginRequiredMixin,View):
+    def get(self,request,*args,**kwargs):
+        rows =[]
+        total = models.Assets.objects.all().count()
+        queryset = models.Assets.objects.all()
+        for row in queryset:
+            rows.append ({'pk':row.pk,'hostname':row.hostname,'wip':row.wip,'lip':row.lip,'system_type':row.system_type,'ctime':row.ctime,'utime':row.utime,'idc':[i.name for i in row.idc_set.all()],'group':[g.name for g in row.hostgroup_set.all()],'status':row.get_online_status_display()},
+                   )
+        data = {"total":total,'rows':rows}
+        return HttpResponse(json.dumps(data, cls=DjangoJSONEncoder,ensure_ascii=False), content_type="application/json")
 
 class HostGroupList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
 
@@ -84,7 +98,7 @@ class HostUserAdd(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
 class AssetUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.Assets
     form_class = forms.AssetForm
-    template_name = 'asset/asset_edit.html'
+    template_name = 'asset/asset_add.html'
     success_url = reverse_lazy('asset_list')
     permission_required = 'asset.can_change_asset'
     raise_exception = True
@@ -96,7 +110,7 @@ class AssetUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class HostGroupUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.HostGroup
     form_class = forms.HostGroupForm
-    template_name = 'asset/role_edit.html'
+    template_name = 'asset/role_add.html'
     success_url = reverse_lazy('role_list')
     permission_required = 'asset.can_change_hostgroup'
     raise_exception = True
@@ -108,7 +122,7 @@ class HostGroupUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class IdcUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.IDC
     form_class = forms.IDCForm
-    template_name = 'asset/idc_edit.html'
+    template_name = 'asset/idc_add.html'
     success_url = reverse_lazy('idc_list')
     permission_required = 'asset.can_change_idc'
     raise_exception = True
@@ -120,7 +134,7 @@ class IdcUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
 class HostUserUpdate(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = models.HostUsers
     form_class = forms.HostUserForm
-    template_name = 'asset/user_edit.html'
+    template_name = 'asset/user_add.html'
     success_url = reverse_lazy('user_list')
     permission_required = 'asset.can_change_hostuser'
     raise_exception = True
@@ -192,3 +206,20 @@ def idc_asset(request, nid):
 def group_asset(request, nid):
     obj = models.HostGroup.objects.get(pk=nid)
     return render(request, 'asset/group_asset.html', {"nid": nid, "asset_list": obj,})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

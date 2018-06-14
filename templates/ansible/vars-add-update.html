@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}资产修改{% endblock %}</title>
+
+    <title>变量添加及修改</title>
     <link href="/static/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="/static/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="/static/plugins/iCheck/custom.css" rel="stylesheet">
@@ -21,7 +22,7 @@
             <div class="col-sm-12">
                 <div class="ibox float-e-margins">
                     <div class="ibox-title">
-                        <h5>主机编辑</h5>
+                        <h5>变量添加及修改</h5>
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -52,7 +53,7 @@
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-2">
                                     <button class="btn btn-primary" type="submit">保存内容</button>
-                                    <button class="btn btn-white" type="submit" id="exit_edit">取消</button>
+                                    <button class="btn btn-white" type="submit" id="exit_add">取消</button>
                                 </div>
                             </div>
                         </form>
@@ -79,7 +80,7 @@
                 radioClass: 'iradio_square-green',
             });
         });
-        $("#exit_edit").click(function () {
+        $("#exit_add").click(function () {
            window.history.back(-1);
 
         })

@@ -80,8 +80,18 @@
                             <li><a class="J_menuItem" href="{% url 'file_transfer' %}">文件传输</a>
                             </li>
                             <li><a class="J_menuItem" href="{% url 'task_log' %}">批量任务审计</a></li>
-                            <li><a class="J_menuItem" href="">Ansible模块</a>
+
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="fa fa-server"></i> <span class="nav-label">Ansible模块</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="{% url 'toolslist' %}">工具管理</a>
                             </li>
+                            <li><a class="J_menuItem" href="{% url 'varlist' %}">变量管理</a>
+                            </li>
+                            <li><a class="J_menuItem" href="{% url 'task_log' %}">任务编排</a></li>
+
                         </ul>
                     </li>
                     <li>

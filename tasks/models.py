@@ -59,7 +59,7 @@ class Tools(models.Model):
     )
 
     name = models.CharField(max_length=255, verbose_name='工具名称', unique=True)
-    tool_script = models.TextField(verbose_name='脚本', null=True, blank=True)
+    tool_script = models.TextField(verbose_name='脚本内容', null=True, blank=True)
     tool_run_type = models.CharField(choices=TOOL_RUN_TYPE, verbose_name='脚本类型', max_length=24)
     comment = models.TextField(verbose_name='工具说明', null=True, blank=True)
 
@@ -74,12 +74,13 @@ class Tools(models.Model):
         verbose_name = "工具"
         verbose_name_plural = verbose_name
         permissions ={
-            'can_add_tools',('可以添加工具'),
-            'can_view_tools',('可以查看工具'),
-            'can_delete_tools',('可以删除工具'),
-            'can_change_tools',('可以修改工具'),
+            ("can_add_tools", ("可以添加工具")),
+            ("can_change_tools", ("可以修改工具信息")),
+            ("can_delete_tools", ("可以删除工具")),
+            ("can_view_tools", ("可以查看工具信息")),
 
         }
+
 
 
 class ToolsResults(models.Model):
@@ -94,12 +95,13 @@ class ToolsResults(models.Model):
 
     class Meta:
         db_table = "ToolsResults"
-        verbose_name = "任务"
+        verbose_name = "任务结果"
         verbose_name_plural = verbose_name
         permissions ={
-            'can_view_toolsresult': ('可以查看任务结果'),
+            ("can_view_toolsresult", ("可以查看任务结果")),
 
         }
+
 
 
 class Variable(models.Model):
@@ -118,9 +120,10 @@ class Variable(models.Model):
         db_table = "Variable"
         verbose_name = "变量组"
         verbose_name_plural = verbose_name
-        permissions = {
-            'can_add_var':('可以添加变量'),
-            'can_view_var':('可以查看变量'),
-            'can_delete_var':('可以删除变量'),
-            'can_change_var':('可以修改变量'),
+        permissions ={
+            ("can_add_var", ("可以添加变量")),
+            ("can_change_var", ("可以修改变量信息")),
+            ("can_delete_var", ("可以删除变量")),
+            ("can_view_var", ("可以查看变量信息")),
+
         }

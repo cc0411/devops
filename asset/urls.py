@@ -19,6 +19,10 @@ urlpatterns = [
     url(r'^export$', views.export, name='export'),
     url(r'^idc_asset/nid(\d+)$', views.idc_asset, name="idc_asset"),
     url(r'^group_asset/nid(\d+)$', views.group_asset, name="group_asset"),
+    url(r'^assetjson/',views.GetAssetJson.as_view(),name='assetjson'),
 
 
 ]
+
+
+

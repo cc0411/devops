@@ -1,0 +1,114 @@
+{
+  "width": 126, 
+  "version": 1, 
+  "command": "/bin/bash", 
+  "env": {
+    "TERM": null, 
+    "SHELL": "/bin/bash"
+  }, 
+  "title": null, 
+  "duration": 9.150641, 
+  "stdout": [
+    [
+      5.2e-05, 
+      "Last login: Tue Jun 12 17:21:14 2018\r\r\n"
+    ], 
+    [
+      0.054735, 
+      "[root@localhost ~]# "
+    ], 
+    [
+      3.663404, 
+      "l"
+    ], 
+    [
+      0.094997, 
+      "s"
+    ], 
+    [
+      0.189923, 
+      "\r\n"
+    ], 
+    [
+      0.006381, 
+      "anaconda-ks.cfg  \u001b[0m\u001b[01;34mautodev2\u001b[0m      \u001b[01;34mdevops\u001b[0m                   \u001b[01;31mkibana-6.2.4-x86_64.rpm\u001b[0m  \u001b[01;34mwebterminal\u001b[0m\r\na.txt            \u001b[01;31mautodev2.zip\u001b[0m  \u001b[01;31melasticsearch-6.2.4.rpm\u001b[0m  \u001b[01;31mlogstash-6.2.4.rpm\u001b[0m\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.216506, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.427397, 
+      "o"
+    ], 
+    [
+      0.114807, 
+      "w"
+    ], 
+    [
+      0.263451, 
+      "d"
+    ], 
+    [
+      0.109639, 
+      "\r\n"
+    ], 
+    [
+      0.005536, 
+      "-bash: owd: command not found\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.194608, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      0.181479, 
+      "\r\n[root@localhost ~]# "
+    ], 
+    [
+      1.011463, 
+      "e"
+    ], 
+    [
+      0.004219, 
+      "w"
+    ], 
+    [
+      0.243131, 
+      "x"
+    ], 
+    [
+      0.518267, 
+      "\b\u001b[K"
+    ], 
+    [
+      0.176579, 
+      "\b\u001b[K"
+    ], 
+    [
+      0.19223, 
+      "\b\u001b[K"
+    ], 
+    [
+      0.137486, 
+      "e"
+    ], 
+    [
+      0.214929, 
+      "x"
+    ], 
+    [
+      0.095685, 
+      "i"
+    ], 
+    [
+      0.524577, 
+      "t"
+    ], 
+    [
+      0.47502, 
+      "\r\nlogout\r\n"
+    ]
+  ], 
+  "height": 40
+}

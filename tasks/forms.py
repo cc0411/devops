@@ -12,7 +12,7 @@ class ToolsForm(ModelForm):
             'name':widgets.TextInput(attrs={'class': 'form-control',}),
             'comment': widgets.Textarea(attrs={'class': 'form-control','cols': 80, 'rows': 6}),
             'tool_script': widgets.Textarea(attrs={'class': 'form-control','cols': 80, 'rows': 6}),
-            'tool_run_type': widgets.SelectMultiple(attrs={'class': 'form-control','data-placeholder': '选择脚本类型'}),
+            'tool_run_type': widgets.Select(attrs={'class': 'form-control','data-placeholder': '选择脚本类型'}),
         }
 
         help_texts = {
