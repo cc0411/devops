@@ -70,7 +70,7 @@
                                     <td><a class="btn btn-primary  btn-xs "
                                                    href="{% url 'asset_edit'  asset.id %}">编辑</a>
                                                 <a class="btn btn-danger  btn-xs  asset_del" data-toggle="modal"
-                                                   data-target="#myModal1" id="{{  asset.id }}">删除
+                                                   data-target="#myModal1">删除
                                                 </a>
                                                 <a class="btn btn-primary  btn-xs "
                                                    href="#">性能</a>
@@ -114,7 +114,9 @@
        $(document).on('click','.asset_del',function () {
 
               $.ajaxSetup({headers: {"X-CSRFToken": '{{ csrf_token }}'}});
-                    var id = $(this).attr('id');
+                    var $trEle = $(this).parent().parent();
+                    var id = $trEle.children().eq(1).text();
+
                     console.log(id)
 
                     swal({
@@ -124,7 +126,8 @@
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "确定",
-                        closeOnConfirm: false
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm:true,
                     }, function () {
 
                         $.ajax({
@@ -135,7 +138,8 @@
                                 var obj = JSON.parse(data);
                                 if (obj.status) {
                                     swal({title: "删除", text: "已成功删除", type: "success"}, function () {
-                                        window.location.reload();
+                                        //window.location.reload();
+                                        $trEle.remove();
                                     })
                                 } else {
                                     swal("错误", "删除" + "[ " + obj.error + " ]" + "遇到错误", "error");

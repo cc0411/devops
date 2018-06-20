@@ -6,10 +6,7 @@ from asset import  models,forms
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 import xlwt,time
-import  csv,codecs
-from io import StringIO
-from datetime import date, datetime
-import  json
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.core.serializers.json import DjangoJSONEncoder
 # Create your views here.
 class AssetList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
@@ -21,11 +18,37 @@ class AssetList(LoginRequiredMixin,PermissionRequiredMixin,ListView):
     permission_required = 'asset.can_view_asset'
     raise_exception = True
 
+
+
+
+
+
 class  GetAssetJson(LoginRequiredMixin,View):
     def get(self,request,*args,**kwargs):
+        limit = request.GET.get('limit')
+        offset = request.GET.get('offset')
+        search = request.GET.get('search')
+        sort_column = request.GET.get('sort')   # which column need to sort
+        order = request.GET.get('order')      # ascending or descending
+        if search:
+            queryset = models.Assets.objects.filter(hostname=search,wip=search,lip=search)
+        else:
+            queryset = models.Assets.objects.all()
+        if sort_column:
+            sort_column = sort_column.replace('',None)
+            if sort_column in ['pk','wip','lip','hostname','ctime','utime']:
+                if order =='desc':
+                    sort_column = '-%s' %sort_column
+
+        if not offset:
+            offset = 0
+        if  not limit:
+            limit =10
+        pageinator = Paginator(queryset,limit)
+        page = int(int(offset)/int(limit)+1)
+
         rows =[]
         total = models.Assets.objects.all().count()
-        queryset = models.Assets.objects.all()
         for row in queryset:
             rows.append ({'pk':row.pk,'hostname':row.hostname,'wip':row.wip,'lip':row.lip,'system_type':row.system_type,'ctime':row.ctime,'utime':row.utime,'idc':[i.name for i in row.idc_set.all()],'group':[g.name for g in row.hostgroup_set.all()],'status':row.get_online_status_display()},
                    )
@@ -206,7 +229,6 @@ def idc_asset(request, nid):
 def group_asset(request, nid):
     obj = models.HostGroup.objects.get(pk=nid)
     return render(request, 'asset/group_asset.html', {"nid": nid, "asset_list": obj,})
-
 
 
 

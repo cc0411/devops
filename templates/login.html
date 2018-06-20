@@ -22,17 +22,23 @@
         <div>
             <h3>欢迎访问Devops</h3>
 
-            <form class="m-t" role="form" action="login.html" method="post">{% csrf_token %}
+            <form class="m-t" role="form" method="post">{% csrf_token %}
                 <div class="form-group">
-                    <input type="email" class="form-control" name="username" placeholder="用户名" required="">
+                    <input type="email" class="form-control" id="username"  name="username" placeholder="用户名" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="password" placeholder="密码" required="">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密码" required="">
                 </div>
-                <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
-                <h3 style="color: red"><b>{{ err_msg }}</b></h3>
-                </p>
-
+                <div class="form-group">
+                    <input type="text" name="valid_code" id="valid_code" style="width:35%;height: 34px">
+                    <img id="valid-img" class="valid-img" src="/get_code" alt="">
+            </div>
+                <div class="form-group">
+                <div >
+                    <button type="button" id="login-button" class="btn btn-primary block full-width m-b">登 录</button>
+                    <span class="login-error" style="color: red"></span>
+                </div>
+            </div>
             </form>
         </div>
     </div>
@@ -40,6 +46,48 @@
     <!-- 全局js -->
     <script src="/static/js/jquery.min.js?v=2.1.4"></script>
     <script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+    <script>
+
+         $("#login-button").click(function () {
+        // 1. 取到用户填写的用户名和密码 -> 取input框的值
+        var username = $("#username").val();
+        var password = $("#password").val();
+        var valid_code = $("#valid_code").val();
+
+        // 2. 用AJAX发送到服务端
+        $.ajax({
+            url: "/login/",
+            type: "post",
+            headers: {"X-CSRFToken": '{{ csrf_token }}'},
+            data: {
+                "username": username,
+                "password": password,
+                "valid_code": valid_code
+            },
+            success: function (data) {
+                if (!data.status){
+                    $(".login-error").text(data.msg);
+                    // 有错误，在页面上提示
+                }else{
+                    // 登陆成功
+                    location.href = '/';
+                }
+            }
+        })
+    });
+
+    // 当input框获取焦点时将之前的错误清空
+    $("#username,#password").focus(function () {
+        // 将之前的错误清空
+        $(".login-error").text("");
+    });
+
+    // 点击验证码图片 刷新验证码
+    $("#valid-img").click(function () {
+        $(this)[0].src += "?";
+    });
+
+    </script>
 
 
 </body>

@@ -52,7 +52,7 @@
 
         var table = $('#hostTable').bootstrapTable(
             {
-                url: "{% url 'assetjson' %}",               //请求url
+                url: "{% url 'asset_list' %}",               //请求url
                 method:'get',
                 dataField: "rows",       //服务器返回数据放的键值
                 search: true,           //是否搜索
